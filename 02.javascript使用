@@ -1,0 +1,17 @@
+1.HTML 中的脚本必须位于 <script> 与 </script> 标签之间。
+
+2.脚本可被放置在 HTML 页面的 <body> 和 <head> 部分中。
+
+3.<script> 和 </script> 会告诉 JavaScript 在何处开始和结束。
+
+4.通常的做法是把函数放入 <head> 部分中，或者放在页面底部。这样就可以把它们安置到同一处位置，不会干扰页面的内容。
+
+5.
+如需使用外部文件，请在 <script> 标签的 "src" 属性中设置该 .js 文件：
+<script src="myScript.js"></script>
+
+提示：外部脚本不能包含 <script> 标签。
+
+
+
+UPDQATE DY HUBERT 2017-6-5 7：24 AM
