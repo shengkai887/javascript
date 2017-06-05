@@ -1,0 +1,18 @@
+单行注释以 // 开头。
+
+// 输出标题：
+document.getElementById("myH1").innerHTML="Welcome to my Homepage";
+// 输出段落：
+document.getElementById("myP").innerHTML="This is my first paragraph.";
+
+
+多行注释以 /* 开始，以 */ 结尾。
+
+在下面的例子中，我们把注释放到代码行的结尾处：
+
+var x=5;    // 声明 x 并把 5 赋值给它
+var y=x+2;  // 声明 y 并把 x+2 赋值给它
+
+
+
+UPDATE BY HUBERT 2017-6-6 00:29
