@@ -1,0 +1,61 @@
+1.
+JavaScript 中的所有事物都是对象：字符串、数字、数组、日期，等等。
+
+在 JavaScript 中，对象是拥有属性和方法的数据。
+
+属性是与对象相关的值。
+
+方法是能够在对象上执行的动作。
+
+
+
+2.JavaScript 中的对象
+在 JavaScript 中，对象是数据（变量），拥有属性和方法。
+
+当您像这样声明一个 JavaScript 变量时：
+var txt = "Hello";
+
+实际上已经创建了一个 JavaScript 字符串对象。字符串对象拥有内建的属性 length。
+
+属性：
+txt.length=5
+方法：
+txt.indexOf()
+txt.replace()
+txt.search()
+
+
+
+
+3.创建 JavaScript 对象
+JavaScript 中的几乎所有事务都是对象：字符串、数字、数组、日期、函数，等等。
+你也可以创建自己的对象。
+
+person=new Object();
+person.firstname="Bill";
+person.lastname="Gates";
+person.age=56;
+person.eyecolor="blue";
+
+
+
+
+4.访问对象的属性
+objectName.propertyName
+
+
+5.访问对象的方法
+通过下面的语法调用方法：
+objectName.methodName()
+
+实例：
+
+var message="Hello world!";
+var x=message.toUpperCase();
+
+
+
+
+UPDATE BY HUBERT 2017-6-6 1：56 AM 
+
+
