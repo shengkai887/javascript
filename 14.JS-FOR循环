@@ -1,0 +1,89 @@
+JavaScript For 循环
+
+循环可以将代码块执行指定的次数。
+
+1.JavaScript 支持不同类型的循环：
+
+    for - 循环代码块一定的次数
+    for/in - 循环遍历对象的属性
+    while - 当指定的条件为 true 时循环指定的代码块
+    do/while - 同样当指定的条件为 true 时循环指定的代码块
+    
+
+
+2.FOR循环
+
+for (语句 1; 语句 2; 语句 3)
+  {
+  被执行的代码块
+  }
+
+语句 1 在循环（代码块）开始前执行
+语句 2 定义运行循环（代码块）的条件
+语句 3 在循环（代码块）已被执行之后执行
+
+
+实例：
+<button onclick="myFunction()">点击这里</button>
+<p id="demo"></p>
+
+<script>
+function myFunction()
+{
+var x="";
+for (var i=0;i<5;i++)
+  {
+  x=x + "The number is " + i + "<br>";
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+
+如果语句 2 返回 true，则循环再次开始，如果返回 false，则循环将结束。
+
+
+
+3.FOR IN 循环
+javaScript for/in 语句循环遍历对象的属性：
+
+<p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
+<button onclick="myFunction()">点击这里</button>
+<p id="demo"></p>
+
+<script>
+function myFunction()
+{
+var x;
+var txt="";
+var person={fname:"Bill",lname:"Gates",age:56}; 
+for (x in person) { 
+        txt=txt + " " + person[x];
+        }       
+document.getElementById("demo").innerHTML=txt;
+}            
+      
+</script>
+
+
+UPDATE BY HUBERT 2017-6-6 4：39 AM 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
