@@ -1,0 +1,105 @@
+只要指定条件为 true，循环就可以一直执行代码。
+
+while 循环
+
+While 循环会在指定条件为真时循环执行代码块。
+
+
+while (条件)
+  {
+  需要执行的代码
+  }
+  
+
+实例：
+
+<p>点击下面的按钮，只要 i 小于 5 就一直循环代码块。</p>
+<button onclick="myFunction()">点击这里</button>
+<p id="demo"></p>
+
+<script>
+function myFunction()
+{
+var x="",i=0;
+while (i<5)
+  {
+  x=x + "The number is " + i + "<br>";
+  i++;
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+如果您忘记增加条件中所用变量的值，该循环永远不会结束。该可能导致浏览器崩溃。、
+
+
+
+
+
+
+
+
+do/while 循环
+
+
+do/while 循环是 while 循环的变体。该循环会执行一次代码块，在检查条件是否为真之前，然后如果条件为真的话，就会重复这个循环。
+do
+  {
+  需要执行的代码
+  }
+while (条件);
+
+下面的例子使用 do/while 循环。该循环至少会执行一次，即使条件是 false，隐藏代码块会在条件被测试前执行：
+do
+  {
+  x=x + "The number is " + i + "<br>";
+  i++;
+  }
+while (i<5);
+
+
+实例测试：
+<script>
+cars=["BMW","Volvo","Saab","Ford"];
+var i=0;
+while (cars[i])
+{
+document.write(cars[i] + "<br>");
+i++;
+}
+</script>
+
+or
+
+<script>
+cars=["BMW","Volvo","Saab","Ford"];
+var i=0;
+for (;cars[i];)
+{
+document.write(cars[i] + "<br>");
+i++;
+}
+</script>
+
+
+
+UPDATE BY HUBERT 2017-6-6 6:52 AM 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
