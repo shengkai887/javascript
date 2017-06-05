@@ -1,0 +1,93 @@
+avaScript Break 和 Continue 语句
+
+break 语句用于跳出循环。
+continue 用于跳过循环中的一个迭代。
+
+
+1.Break 语句
+
+我们已经在本教程稍早的章节中见到过 break 语句。它用于跳出 switch() 语句。
+
+break 语句可用于跳出循环。
+
+break 语句跳出循环后，会继续执行该循环之后的代码（如果有的话）：
+
+实例：
+
+<p>点击按钮，测试带有 break 语句的循环。</p>
+<button onclick="myFunction()"> CLICK HERE</button>
+<p id="demo"> </p>
+
+<script>
+function myFunction() {
+var x="",i=0;
+for (i=0;i<10;i++) {
+        if(i==3) { break; }
+        x=x+"The num is "+ i+"<br />";
+        }
+document.getElementById("demo").innerHTML=x;
+
+}
+
+
+</script>
+
+结果
+The num is 0
+The num is 1
+The num is 2
+
+
+
+
+2.Continue 语句
+continue 语句中断循环中的迭代，如果出现了指定的条件，然后继续循环中的下一个迭代。
+
+跳过本次循环，进入下一次循环 。
+
+该例子跳过了值 3：
+
+实例：
+
+
+for (i=0;i<=10;i++)
+ {
+ if (i==3) continue;
+  x=x + "The number is " + i + "<br>";
+  }
+  
+结果
+The num is 0
+The num is 1
+The num is 2
+The num is 4
+The num is 5
+The num is 6
+The num is 7
+The num is 8
+The num is 9
+
+
+
+
+
+UPDATE BY HUBERT 2017-6-6 7:09 AM 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
