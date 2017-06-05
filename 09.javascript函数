@@ -1,0 +1,114 @@
+1.函数是事件驱动的或者当它被调用时执行的可重复使用的代码块。
+
+实例：
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction()
+{
+alert("Hello World!");
+}
+</script>
+</head>
+
+<body>
+<button onclick="myFunction()">点击这里</button>
+</body>
+</html>
+
+
+
+
+2.JavaScript 函数语法
+函数就是包裹在花括号中的代码块，前面使用了关键词 function：
+function functionname()
+{
+这里是要执行的代码
+}
+
+JavaScript 对大小写敏感。关键词 function 必须是小写的，并且必须以与函数名称相同的大小写来调用函数。
+
+
+
+3.调用带参数的函数
+在调用函数时，您可以向其传递值，这些值被称为参数。
+这些参数可以在函数中使用。
+您可以发送任意多的参数，由逗号 (,) 分隔：
+myFunction(argument1,argument2)
+
+当您声明函数时，请把参数作为变量来声明：
+function myFunction(var1,var2)
+{
+这里是要执行的代码
+}
+
+变量和参数必须以一致的顺序出现。第一个变量就是第一个被传递的参数的给定的值，以此类推。
+
+实例：
+
+<p> CLICK BUTTON WILL CALL FUNCTION  </p>
+
+<button onclick="myFunction('bill gates','CEO')"> CLICK HERE</button>
+
+<script>
+function myFunction(name,role) {
+alert("Welcome " + name + ", the " + role);
+}
+
+</script>
+
+
+4.带有返回值的函数
+通过使用 return 语句就可以实现。
+
+在使用 return 语句时，函数会停止执行，并返回指定的值。
+
+function myFunction()
+{
+var x=5;
+return x;
+}
+
+上面的函数会返回值 5。
+
+整个 JavaScript 并不会停止执行，仅仅是函数。JavaScript 将继续执行代码，从调用函数的地方。
+
+
+5.局部 JavaScript 变量
+在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它.
+
+
+6.全局 JavaScript 变量
+在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。
+
+
+7.JavaScript 变量的生存期
+JavaScript 变量的生命期从它们被声明的时间开始。
+
+局部变量会在函数运行以后被删除。
+全局变量会在页面关闭后被删除。
+
+
+8.向未声明的 JavaScript 变量来分配值
+如果您把值赋给尚未声明的变量，该变量将被自动作为全局变量声明。
+
+carname="Volvo";
+
+将声明一个全局变量 carname，即使它在函数内执行。
+
+
+
+UPDATE BY HUBERT 2017-6-6 2:29 AM 
+
+
+
+
+
+
+
+
+
+
+
+
