@@ -1,0 +1,37 @@
+JavaScript 通常用于操作 HTML 元素。
+
+如需从 JavaScript 访问某个 HTML 元素，您可以使用 document.getElementById(id) 方法。
+
+实例1
+<p id="demo">My First Paragraph.</p>
+
+<script>
+document.getElementById("demo").innerHTML="My First JavaScript";
+</script>
+
+实例2
+直接把 <p> 元素写到 HTML 文档输出中：
+<script>
+document.write("<p>My First JavaScript</p>");
+</script>
+
+实例3
+<h1>My First Web Page</h1>
+
+<p>My First Paragraph.</p>
+
+<button onclick="myFunction()">点击这里</button>
+
+<script>
+function myFunction()
+{
+document.write("糟糕！文档消失了。");
+}
+</script>
+
+警告
+请使用 document.write() 仅仅向文档输出写内容。
+如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖
+
+
+--UPDATE BY HUBERT 2017-06-06 5:20 PM 
