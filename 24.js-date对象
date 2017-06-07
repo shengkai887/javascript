@@ -1,0 +1,85 @@
+日期对象用于处理日期和时间
+
+
+1.JavaScript Date（日期）对象 实例
+
+实例1: 返回当日的日期和时间
+实例2:getTime() 返回从 1970 年 1 月 1 日至今的毫秒数。
+实例3:使用 setFullYear() 设置具体的日期。
+实例4:使用 toUTCString() 将当日的日期（根据 UTC）转换为字符串。
+实例5:使用 getDay() 和数组来显示星期，而不仅仅是数字。
+实例6:在网页上显示一个钟表
+
+<html>
+<body onload="startTime()">
+<div id="txt"> </div>
+<p>----------CURRENT TIME -------------- </p>
+
+
+<script type="text/javascript">
+
+var day=new Date();
+document.write(Date()+"<br />");
+document.write("FROM 1970-1-1 TO NOW "+ day.getTime()+"ms"+"<br />");
+document.write(day.toUTCString()+"<br />");
+
+//set fix date
+var newday=new Date();
+newday.setFullYear(2017,2,19);
+document.write(newday+"<br />");
+//dispaly the date for week
+var dday=new Date();
+var weekday=new Array(7);
+weekday[0]="Sunday";
+weekday[1]="Monday";
+weekday[2]="Thuesday";
+weekday[3]="Wednesday";
+weekday[4]="Thursday";
+weekday[5]="Friday";
+weekday[6]="Saturday";
+
+document.write("Today is "+weekday[dday.getDay()]+"<br />");
+//display the clock on the page
+
+function checkTime(i) {
+if (i<10) {i="0"+i; }
+return i;
+}
+
+
+function startTime() {
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+
+m=checkTime(m)
+s=checkTime(s)
+
+document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+t=setTimeout('startTime()',5);
+
+}
+// 比较日期
+if (day>newday) {
+alert("day is biger than 2017-2-19");
+} else  {
+alert("day is small than 2017-2-19");
+}
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+UPDATE BY HUBERT 2017-6-8 1:55AM
