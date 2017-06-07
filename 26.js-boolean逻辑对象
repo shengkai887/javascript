@@ -1,0 +1,26 @@
+Boolean（逻辑）对象用于将非逻辑值转换为逻辑值（true 或者 false）。
+
+<script type="text/javascript">
+var b1=new Boolean( 0)
+var b2=new Boolean(1)
+var b3=new Boolean("")
+var b4=new Boolean(null)
+var b5=new Boolean(NaN)
+var b6=new Boolean("false")
+
+document.write("0 是逻辑的 "+ b1 +"<br />")
+document.write("1 是逻辑的 "+ b2 +"<br />")
+document.write("空字符串是逻辑的 "+ b3 + "<br />")
+document.write("null 是逻辑的 "+ b4+ "<br />")
+document.write("NaN 是逻辑的 "+ b5 +"<br />")
+document.write("字符串 'false' 是逻辑的 "+ b6 +"<br />")
+</script>
+
+您可以将 Boolean 对象理解为一个产生逻辑值的对象包装器。
+
+Boolean（逻辑）对象用于将非逻辑值转换为逻辑值（true 或者 false）。
+
+注释：如果逻辑对象无初始值或者其值为 0、-0、null、""、false、undefined 或者 NaN，那么对象的值为 false。否则，其值为 true（即使当自变量为字符串 "false" 时）！
+
+
+UPDATE BY HUBERT 2017-6-8 3:11 AM
