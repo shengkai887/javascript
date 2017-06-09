@@ -1,0 +1,259 @@
+
+1.实例
+
+
+实例1：击本例中的按钮后，会在 5 秒后弹出一个警告框。
+<html>
+<head>
+
+<script>
+function clickMsg() {
+  var t=setTimeout("alert('5s!!')",5000)
+}
+</script>
+
+</head>
+<body>
+
+<input type="button" value="display_alert_msg" onclick="clickMsg()">
+
+<p>PLS CLICK THE BUTTON ,AND WILL DISPALY ALERT MESSAGE AFTER 5S. </p>
+
+</body>
+</html>
+
+
+实例2：程序会执行 2 秒、4 秒和 6 秒的计时。
+
+<html>
+<head>
+  
+<script>
+function clickMsg() {
+  var t1=setTimeout("document.getElementById('txt').value='2s'",2000)
+  var t2=setTimeout("document.getElementById('txt').value='4s'",4000)
+  var t3=setTimeout("document.getElementById('txt').value='6s'",6000)
+}
+
+</script>
+</head>
+
+<body>
+
+<input type="button" value="dis_count_time_2_4_6" onclick="clickMsg()">
+<input type="text" id="txt">
+<p>点击上面的按钮。输入框会显示出已经逝去的时间（2、4、6 秒）。 </p>
+
+</body>
+</html>
+
+实例3：在一个无穷循环中的计时事件-单击开始计时按钮后，程序开始从 0 以秒计时。
+<html>
+<head>
+
+<script>
+var num = 0
+function clickMsg() {
+  document.getElementById('txt').value=num
+  num +=1
+  t=setTimeout("clickMsg()",1000)
+
+}
+
+</script>
+</head>
+
+<body>
+
+  <form>
+  <input type="button" value="开始计时！" onClick="clickMsg()">
+  <input type="text" id="txt">
+  </form>
+
+  <p>请点击上面的按钮。输入框会从 0 开始一直进行计时。</p>
+</body>
+</html>
+
+实例4：带有停止按钮的无穷循环中的计时事件--点击计数按钮后根据用户输入的数值开始倒计时，点击停止按钮停止计时。
+
+<html>
+<head>
+
+<script>
+var num = 0
+function clickMsg() {
+  document.getElementById('txt').value=num
+  num +=1
+  t=setTimeout("clickMsg()",1000)
+
+}
+
+function stopcount() {
+  num=0
+  setTimeout("document.getElementById('txt').value=0",0);
+  clearTimeout(t);
+
+}
+
+</script>
+</head>
+
+<body>
+
+  <form>
+  <input type="button" value="开始计时！" onClick="clickMsg()">
+  <input type="text" id="txt">
+  <input type="button" value="停止计时！" onClick="stopcount()">
+  </form>
+
+  <p>请点击上面的 开始计时 按钮来启动计时器，从0开始计时</p>
+  <p>点击 停止计时 按钮时，将计数器重置为0 </p>
+</body>
+</html>
+
+实例5：时钟
+
+<html>
+<head>
+
+<script>
+function startTime() {
+  var today=new Date()
+  var h=today.getHours()
+  var m=today.getMinutes()
+  var s=today.getSeconds()
+
+// add a zero in front of numbers <10
+m=checkTime(m)
+s=checkTime(s)
+
+document.getElementById('txt').innerHTML=h+":"+m+":"+s
+t=setTimeout('startTime()',500)
+
+}
+
+function checkTime(i) {
+  if (i<10) {
+    i="0"+i
+  }
+  return i
+}
+
+  
+</script>
+</head>
+
+<body onload="startTime()">
+<div id="txt"></div>
+</body>
+</html>
+
+
+
+2.JavaScript 计时事件
+
+通过使用 JavaScript，我们有能力做到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行。我们称之为计时事件。
+
+在 JavaScritp 中使用计时事件是很容易的，两个关键方法是:
+
+
+setTimeout()
+    未来的某时执行代码
+clearTimeout()
+    取消setTimeout() 
+
+
+setTimeout()
+语法
+
+var t=setTimeout("javascript语句",毫秒)
+
+setTimeout() 方法会返回某个值。在上面的语句中，值被储存在名为 t 的变量中。假如你希望取消这个 setTimeout()，你可以使用这个变量名来指定它。
+
+setTimeout() 的第一个参数是含有 JavaScript 语句的字符串。这个语句可能诸如 "alert('5 seconds!')"，或者对函数的调用，诸如 alertMsg()"。
+
+第二个参数指示从当前起多少毫秒后执行第一个参数。
+
+clearTimeout()
+语法
+
+clearTimeout(setTimeout_variable)
+
+
+
+
+UPDATE BY SHENGKAI 2017-6-10 1：15 AM 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
