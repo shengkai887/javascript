@@ -63,6 +63,10 @@ alert("Welcome " + name + ", the " + role);
 通过使用 return 语句就可以实现。
 
 在使用 return 语句时，函数会停止执行，并返回指定的值。
+在使用 return 语句时，函数会停止执行，并返回指定的值。
+在使用 return 语句时，函数会停止执行，并返回指定的值。
+在使用 return 语句时，函数会停止执行，并返回指定的值。
+
 
 function myFunction()
 {
@@ -99,7 +103,7 @@ carname="Volvo";
 
 
 
-UPDATE BY HUBERT 2017-6-6 2:29 AM 
+UPDATE BY SHENGKAI 2017-6-6 2:29 AM 
 
 
 
