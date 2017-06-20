@@ -64,6 +64,9 @@ document.write(cars[i] + "<br>");
 
 6.JavaScript 对象
 对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔：
+对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔：
+对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔：
+对象由花括号分隔。在括号内部，对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔：
 
 var person={firstname:"Bill", lastname:"Gates", id:5566};
 
@@ -100,6 +103,11 @@ Undefined 这个值表示变量不含有值。
 
 8.声明变量类型
 当您声明新变量时，可以使用关键词 "new" 来声明其类型：
+当您声明新变量时，可以使用关键词 "new" 来声明其类型：
+当您声明新变量时，可以使用关键词 "new" 来声明其类型：
+当您声明新变量时，可以使用关键词 "new" 来声明其类型：
+当您声明新变量时，可以使用关键词 "new" 来声明其类型：
+
 var carname=new String;
 var x=      new Number;
 var y=      new Boolean;
@@ -111,7 +119,7 @@ JavaScript 变量均为对象。当您声明一个变量时，就创建了一个
 
 
 
-UPDATE BY HUBERT 2017-6-6  1:03 AM
+UPDATE BY SHENGKAI 2017-6-6  1:03 AM
 
 
 
