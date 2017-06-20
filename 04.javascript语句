@@ -1,16 +1,10 @@
 1.JavaScript 语句向浏览器发出的命令。语句的作用是告诉浏览器该做什么。
 
-2.
-document.getElementById("demo").innerHTML="Hello World";
-分号用于分隔 JavaScript 语句。
+2.document.getElementById("demo").innerHTML="Hello World";  分号用于分隔 JavaScript 语句。
 
-3.
-JavaScript 代码（或者只有 JavaScript）是 JavaScript 语句的序列。
-浏览器会按照编写顺序来执行每条语句。
+3.JavaScript 代码（或者只有 JavaScript）是 JavaScript 语句的序列。浏览器会按照编写顺序来执行每条语句。
 
-4.
-JavaScript 语句通过代码块的形式进行组合。
-块由左花括号开始，由右花括号结束。块的作用是使语句序列一起执行。
+4.JavaScript 语句通过代码块的形式进行组合。块由左花括号开始，由右花括号结束。块的作用是使语句序列一起执行。
 
 JavaScript 函数是将语句组合在块中的典型例子。
 
@@ -24,8 +18,7 @@ document.getElementById("myDIV").innerHTML="How are you?";
 
 5.JavaScript 对大小写是敏感的。
 
-6.
-JavaScript 会忽略多余的空格。您可以向脚本添加空格，来提高其可读性。下面的两行代码是等效的：
+6.JavaScript 会忽略多余的空格。您可以向脚本添加空格，来提高其可读性。下面的两行代码是等效的：
 var name="Hello";
 var name = "Hello";
 
@@ -36,4 +29,4 @@ World!");
 
 
 
-UPDATE BY HUBERT 2017-6-6 00:16  
+UPDATE BY SHENGKAI 2017-6-6 00:16  
