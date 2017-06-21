@@ -90,7 +90,9 @@ continue 语句（带有或不带标签引用）只能用在循环中。
 break 语句（不带标签引用），只能用在循环或 switch 中。
 
 通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：
-
+通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：
+通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：
+通过标签引用，break 语句可用于跳出任何 JavaScript 代码块：
 
 
 实例 ：
@@ -125,7 +127,7 @@ FORD
 
 
 
-UPDATE BY HUBERT 2017-6-6 7:19 AM 
+UPDATE BY SHENGKAI 2017-6-6 7:19 AM 
 
 
 
