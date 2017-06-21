@@ -66,7 +66,15 @@ document.getElementById("demo").innerHTML=txt;
 </script>
 
 
-UPDATE BY HUBERT 2017-6-6 4：39 AM 
+结果：
+
+点击下面的按钮，循环遍历对象person的属性，使用for in
+
+CLICK_HERE
+bill gates 56 female
+
+
+UPDATE BY SHENGKAI 2017-6-6 4：39 AM 
 
 
 
