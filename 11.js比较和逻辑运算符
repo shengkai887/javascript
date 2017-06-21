@@ -6,7 +6,12 @@
 
 运算符 	描述 	例子
 == 	等于 	x==8 为 false
+
 === 	全等（值和类型） 	x===5 为 true；x==="5" 为 false
+=== 	全等（值和类型） 	x===5 为 true；x==="5" 为 false
+=== 	全等（值和类型） 	x===5 为 true；x==="5" 为 false
+
+
 != 	不等于 	x!=8 为 true
 > 	大于 	x>8 为 false
 < 	小于 	x<8 为 true
@@ -38,4 +43,4 @@ greeting=(visitor=="PRES")?"Dear President ":"Dear ";
 如果变量 visitor 中的值是 "PRES"，则向变量 greeting 赋值 "Dear President "，否则赋值 "Dear"。
 
 
-UPDATE BY HUBERT 2017-6-6 2：51 AM 
+UPDATE BY SHENGKAI 2017-6-6 2：51 AM 
