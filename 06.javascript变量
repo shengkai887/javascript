@@ -75,8 +75,21 @@ job="CEO";
 var carname="Volvo";
 var carname;
 
+6.strict模式
+
+在同一个页面的不同的JavaScript文件中，如果都不用var申明，恰好都使用了变量i，将造成变量i互相影响，产生难以调试的错误结果。
+
+如果一个变量没有通过var申明就被使用，那么该变量就自动被申明为全局变量：
+
+为了修补JavaScript这一严重设计缺陷，ECMA在后续规范中推出了strict模式
+在strict模式下运行的JavaScript代码，强制通过var申明变量，未使用var申明变量就使用的，将导致运行错误。
+
+启用strict模式的方法是在JavaScript代码的第一行写上：
+
+'use strict';
 
 
+不用var申明的变量会被视为全局变量，为了避免这一缺陷，所有的JavaScript代码都应该使用strict模式。我们在后面编写的JavaScript代码将全部采用strict模式。
 
 
 
