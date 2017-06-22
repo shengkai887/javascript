@@ -19,13 +19,16 @@ var x = "Bill";      // x 为字符串
 var carname="Bill Gates";
 var carname='Bill Gates';
 
-3.JavaScript 数字
-JavaScript 只有一种数字类型。数字可以带小数点，也可以不带：
+3.JavaScript 数字Number
+JavaScript不区分整数和浮点数，统一用Number表示，以下都是合法的Number类型：
 
-var x1=34.00;      //使用小数点来写
-var x2=34;         //不使用小数点来写
-var y=123e5;      // 12300000
-var z=123e-5;     // 0.00123
+123; // 整数123
+0.456; // 浮点数0.456
+1.2345e3; // 科学计数法表示1.2345x1000，等同于1234.5
+-99; // 负数
+NaN; // NaN表示Not a Number，当无法计算结果时用NaN表示
+Infinity; // Infinity表示无限大，当数值超过了JavaScript的Number所能表示的最大值时，就表示为Infinity
+
 
 
 4.JavaScript 布尔
