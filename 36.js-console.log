@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>console command</title>
+  <meta http-equiv="content-type" content="text/html";charset="utf-8" />
+
+</head>
+<body>
+  <div id="info">
+    <h3>my blog: https://coding.net</h3>
+    <p>chinese of github,welcome u to use...</p>
+  </div>
+
+  <script type="text/javascript">
+//1.显示信息的命令
+    console.log('hello_world!!!');
+    console.info('INFO');
+    console.error('ERRORS');
+    console.warn("WARNINGS");
+//2.占位符
+
+// %s 	字符串
+// %d or %i 	整数
+// %f 	浮点数
+// %o 	可展开的DOM
+// %O 	列出DOM的属性
+// %c 	根据提供的css样式格式化字符串
+    console.log("%d年%d月%d日",2017,6,23);
+    console.log("圆周率是%f",3.141592654);
+//%o、%O都是用来输出Object对象的，对普通的Object对象，两者没区别，但是打印dom节点时就不一样了
+    var dog = {};
+
+    dog.name = "owen";
+    dog.color="yellow";
+    dog.age="18";
+
+    console.log("%o",dog);
+
+    var china={name:"cn",people:"yellow",location:"asia_eastern"};
+    console.log("%O",china);
+
+    console.log('%o',document.body.firstElementChild);
+    console.log('%O',document.body.firstElementChild);
+//%c占位符是最常用的。使用%c占位符时，对应的后面的参数必须是CSS语句，用来对输出内容进行CSS渲染。
+    console.log("%cHello world,welcome u!!!","color:red;font-size:20px");
+//3.信息分组
+
+    console.group("Frist group");
+      console.log("Frist_group INFO");
+      console.log("Frist_group INFO");
+    console.groupEnd();
+    console.group("Second group");
+      console.log("Sec_group INFO");
+      console.log("Sec_group INFO");
+    console.groupEnd();
+
+//4.console.dir显示一个对象的所有属性和方法。
+    dog.bark = function() {alert("汪汪汪");};
+    console.dir(dog);
+
+//5.显示某个节点的内容
+//console.dirxml()用来显示网页的某个节点（node）所包含的html/xml代码。
+  var info=document.getElementById("info");
+  console.dirxml(info);
+
+//6.判断变量是否是真
+//console.assert()用来判断一个表达式或变量是否为真。如果结果为否，则在控制台输出一条相应信息，并且抛出一个异常。
+    var result = 0;
+    console.assert( result );
+    var year=2017;
+    console.assert( year == 2017 );
+
+//7.console.trace()
+//console.trace()用来追踪函数的调用轨迹。
+    function add(a,b)
+    {
+      console.trace();
+      return a+b;
+    }
+    var x=add2(1,1);
+    function add2(a,b){return add1(a,b);}
+    function add1(a,b){return add(a,b);}
+//8.计时功能
+//console.time()和console.timeEnd()，用来显示代码的运行时间。
+    console.time("COUNT_TIME");
+    for(var i=0;i<10000;i++)
+    {
+      for(var j=0;j<=1000;j++){}
+    }
+    console.timeEnd("COUNT_TIME");
+
+//9.console.profile()的性能分析
+//性能分析（Profiler）就是分析程序各个部分的运行时间，找出瓶颈所在，使用的方法是console.profile()。
+    function All()
+    {
+      alert(11);
+      for (var i=0;i<10;i++)
+      {
+        funcA(1000);
+      }
+      funcB(100000);
+    }
+    function funcA(count)
+    {
+      for(var i=0;i<count;i++){}
+    }
+    function funcB(count)
+    {
+      for(var i=0;i<count;i++){}
+    }
+    console.profile('性能分析');
+    All();
+    console.profileEnd();
+
+//console.profile 暂时测试没有达到预期的效果，后续再说
+
+
+  </script>
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+UPDATE BY SHENGKAI 2017-6-23 17:02 PM 
