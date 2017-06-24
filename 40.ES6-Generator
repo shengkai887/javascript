@@ -1,0 +1,260 @@
+
+generator（生成器）是ES6标准引入的新的数据类型。一个generator看上去像一个函数，但可以返回多次。
+
+generator和函数不同的是，generator由function*定义（注意多出的*号），并且，除了return语句，还可以用yield返回多次。
+
+调用generator对象有两个方法:
+
+一是不断地调用generator对象的next()方法：
+var f = fib(5);
+f.next(); // {value: 0, done: false}
+f.next(); // {value: 1, done: false}
+f.next(); // {value: 1, done: false}
+f.next(); // {value: 2, done: false}
+f.next(); // {value: 3, done: true}
+
+next()方法会执行generator的代码，然后，每次遇到yield x;就返回一个对象{value: x, done: true/false}，然后“暂停”。
+返回的value就是yield的返回值，done表示这个generator是否已经执行结束了
+
+当执行到done为true时，这个generator对象就已经全部执行完毕，不要再继续调用next()了
+
+二个方法是直接用for ... of循环迭代generator对象，这种方式不需要我们自己判断done
+
+
+
+
+
+
+
+补充：
+
+
+
+1.简介
+
+
+
+function* quips(name) {
+  yield "hello " + name + "!";
+  yield "i hope you are enjoying the blog posts";
+  if (name.toLowerCase().startsWith("x")) {
+    yield "hey, it's cool how your name starts with an X, " + name;
+  }
+  yield "see you later!";
+}
+
+var meow_iter = quips("Xingu");
+
+通常的函数以 function 开始，但 Generator 函数以 function* 开始。
+
+在 Generator 函数内部，yield 是一个关键字，和 return 有点像。
+不同点在于，所有函数（包括 Generator 函数）都只能返回一次，而在 Generator 函数中可以 yield 任意次。
+yield 表达式暂停了 Generator 函数的执行，然后可以从暂停的地方恢复执行。
+
+常见的函数不能暂停执行，而 Generator 函数可以，这就是这两者最大的区别。
+
+实例：https://people-mozilla.org/~jorendorff/demos/meow.html 
+
+
+//WRITE BY MYSELF,XDDD
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Simple ES6 Generator Example</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+
+  </head>
+
+<style type="text/css">
+
+div#code {
+  width: 800px;
+  height: 290px;
+  font-size: 16px;
+  background-color: #e5eecc;
+  border: solid 2px #FF0000;
+}
+div#result {
+  width: 800px;
+  height: 50px;
+  font-size: 16px;
+  background-color: #e5eecc;
+  border: solid 2px #000000;
+}
+</style>
+
+<body>
+
+  <div id="code">
+    <pre>
+function* quips(name)
+{
+  yield "hello " + name + "!";
+  yield "i hope you are enjoying the blog posts";
+  if (name.toLowerCase().startsWith("x"))
+  {
+    yield "hey, it's cool how your name starts with an X, " + name;
+  }
+  yield "see you later!";
+}
+var meow_iter = quips("Xingu");
+
+showCat();
+</pre>
+</div>
+
+<br>
+
+<div id="result">
+<p id="presult"></p>
+</div>
+<p><button id="btn" type="button">CLICK TO RUN CODE</button>SHOW RESULT</p>
+
+<script>
+function* quips(name)
+{
+  yield "hello " + name + "!";
+  yield "i hope you are enjoying the blog posts";
+  if (name.toLowerCase().startsWith("x"))
+  {
+    yield "hey, it's cool how your name starts with an X, " + name;
+  }
+  yield "see you later!";
+}
+
+var meow_iter = quips("Xingu");
+
+$(document).ready(function() {
+  $("#btn").click(function(){
+    var result = meow_iter.next();
+
+    if(result.done) {
+      $("#result #presult").text("");
+      meow_iter = undefined;
+      $("#result #presult").hide();
+      document.location.reload();
+    }else {
+      $("#result #presult").text(result.value);
+    }
+
+  });
+});
+
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+2.原理
+
+调用 quips() 时发生了什么？
+
+> var iter = quips("jorendorff");
+  [object Generator]
+> iter.next()
+  { value: "hello jorendorff!", done: false }
+> iter.next()
+  { value: "i hope you are enjoying the blog posts", done: false }
+> iter.next()
+  { value: "see you later!", done: false }
+> iter.next()
+  { value: undefined, done: true }
+
+Generator 函数的调用方法与普通函数一样：quips("jorendorff")，但调用一个 Generator 函数时并没有立即执行，
+而是返回了一个 Generator 对象（上面代码中的 iter），这时函数就立即暂停在函数代码的第一行。
+
+每次调用 Generator 对象的 .next() 方法时，函数就开始执行，直到遇到下一个 yield 表达式为止。
+
+这就是为什么我们每次调用 iter.next() 时都会得到一个不同的字符串，这些都是在函数内部通过 yield 表达式产生的值。
+
+当执行最后一个 iter.next() 时，就到达了 Generator 函数的末尾，所以返回结果的 .done 属性值为 true，并且 .value 属性值为 undefined。
+
+从技术层面上讲，每当 Generator 函数执行遇到 yield 表达式时，函数的栈帧 – 本地变量，函数参数，临时值和当前执行的位置，就从堆栈移除，
+但是Generator 对象保留了对该栈帧的引用，所以下次调用 .next() 方法时，就可以恢复并继续执行。
+
+值得提醒的是 Generator 并不是多线程。
+
+当一个 Generator 函数执行时，它与其调用者都在同一线程中执行，每次执行顺序都是确定的，有序的，并且执行顺序不会发生改变。
+与线程不同，Generator 函数可以在内部的 yield 的标志点暂停执行。
+
+
+3.迭代器
+
+Generator 天生就是迭代器，所有的 Generator 都原生实现了 .next() 和 [Symbol.iterator]() 方法。你只需要实现其中的循环逻辑就够了。
+
+使用作为迭代器的 Generator 的哪些功能
+
+使任何对象可遍历
+简化返回数组的函数
+重构复杂的循环
+构建迭代器的工具
+
+
+实例
+
+
+<html>
+
+<script>
+// Return a new iterator that counts up from 'start' to 'stop'.
+function* range(start, stop) {
+  for (var i = start; i < stop; i++)
+    yield i;
+}
+
+window.go = function go() {
+  var start = parseInt(document.forms.f.start.value);
+  var stop = parseInt(document.forms.f.stop.value);
+  for (var value of range(start, stop)) {
+    alert("Ding! at floor #" + value);
+  }
+};
+
+</script>
+
+<style>
+input.num {
+  max-width: 3em;
+  border: none;
+  background-color: #eee;
+  text-align: right;
+}
+</style>
+
+
+</body>
+<form name="f">
+  <pre>
+    for (var value of range(<input class="num" name="start" type="text"  value="0">, <input class="num" name="stop" type="text" value="3">)) {
+      alert("Ding! at floor #" + value);
+    }
+  </pre>
+  <input type="button" value="Run this code" onclick="go(); return false;">
+</form>
+
+</body>
+
+</html>
+
+
+
+
+
+
+UPDATE BY SHENGKAI 2017-6-24 20：16 PM 
+
+
+
+
+
+
+
+
