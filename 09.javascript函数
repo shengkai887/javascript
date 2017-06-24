@@ -81,10 +81,33 @@ return x;
 
 5.局部 JavaScript 变量
 在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它.
+为了解决块级作用域，ES6引入了新的关键字let，用let替代var可以申明一个块级作用域的变量
 
 
 6.全局 JavaScript 变量
 在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。
+
+不在任何函数内定义的变量就具有全局作用域。实际上，JavaScript默认有一个全局对象window，全局作用域的变量实际上被绑定到window的一个属性
+
+'use strict';
+
+var course = 'Learn JavaScript';
+alert(course); // 'Learn JavaScript'
+alert(window.course); // 'Learn JavaScript'
+
+直接访问全局变量course和访问window.course是完全一样的。
+
+由于函数定义有两种方式，以变量方式var foo = function () {}定义的函数实际上也是一个全局变量，因此，顶层函数的定义也被视为一个全局变量，并绑定到window对象 
+由于函数定义有两种方式，以变量方式var foo = function () {}定义的函数实际上也是一个全局变量，因此，顶层函数的定义也被视为一个全局变量，并绑定到window对象
+由于函数定义有两种方式，以变量方式var foo = function () {}定义的函数实际上也是一个全局变量，因此，顶层函数的定义也被视为一个全局变量，并绑定到window对象
+
+
+function foo() {
+    alert('foo');
+}
+
+foo(); // 直接调用foo()
+window.foo(); // 通过window.foo()调用
 
 
 7.JavaScript 变量的生存期
@@ -100,6 +123,40 @@ JavaScript 变量的生命期从它们被声明的时间开始。
 carname="Volvo";
 
 将声明一个全局变量 carname，即使它在函数内执行。
+
+
+9.补充：
+
+由于JavaScript的函数可以嵌套，此时，内部函数可以访问外部函数定义的变量，反过来则不行
+
+JavaScript的函数在查找变量时从自身函数定义开始，从“内”向“外”查找。如果内部函数定义了与外部函数重名的变量，则内部函数的变量将“屏蔽”外部函数的变量。
+
+变量提升：JavaScript的函数定义有个特点，它会先扫描整个函数体的语句，把所有申明的变量“提升”到函数顶部
+
+
+10.名字空间
+
+全局变量会绑定到window上，不同的JavaScript文件如果使用了相同的全局变量，或者定义了相同名字的顶层函数，都会造成命名冲突，并且很难被发现。
+
+减少冲突的一个方法是把自己的所有变量和函数全部绑定到一个全局变量中。例如：
+
+// 唯一的全局变量MYAPP:
+var MYAPP = {};
+
+// 其他变量:
+MYAPP.name = 'myapp';
+MYAPP.version = 1.0;
+
+// 其他函数:
+MYAPP.foo = function () {
+    return 'foo';
+};
+
+把自己的代码全部放入唯一的名字空间MYAPP中，会大大减少全局变量冲突的可能。
+
+
+
+
 
 
 
