@@ -113,10 +113,10 @@ xiaoming instanceof Student; // true
 					Student---<------			Object
 					-prototype		|			-prototype
 						|			|				|
-						|指向		|指向			|指向
+		向下			|指向   	|指向			|指向
 						|			|				|
 	xiaoming-------->某个对象		|  ------>某个对象------>null
-	-name			-constructor-->-|
+	-name	    	-constructor-->-|
 	-hello
 
 Student.prototype指向的对象就是xiaoming、xiaohong的原型对象，这个原型对象自己还有个属性constructor，指向Student函数本身。
