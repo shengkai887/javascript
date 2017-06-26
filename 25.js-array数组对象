@@ -71,7 +71,65 @@ document.write(arr.sort(sortNumber))
 
 
 
-UPDATE BY HUBERT 2017-6-8 2:55 AM 
+补充：
+array的map,reduce,filter,sort方法
+
+  <script>
+//map()方法定义在JavaScript的Array中，我们调用Array的map()方法，传入我们自己的函数，就得到了一个新的Array作为结果
+  function pow(x)
+  {
+    return x*x;
+  }
+
+  var arr = [1,2,3,4,5,6];
+  arr1=arr.map(pow);
+  alert(arr1);
+  alert(arr);
+
+  //Array的reduce()把一个函数作用在这个Array的[x1, x2, x3...]上，这个函数必须接收两个参数，reduce()把结果继续和序列的下一个元素做累积计算，其效果就是：
+//[x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
+
+  sum=arr.reduce(function(x,y) {
+    return x +y;
+  })
+  alert(sum);
+  //Array的filter()也接收一个函数。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素。
+
+  var r = arr.filter(function(x) {
+    return x%2 !==0;
+  });
+  alert(r);
+  //通常规定，对于两个元素x和y，如果认为x < y，则返回-1，如果认为x == y，则返回0，如果认为x > y，则返回1
+//JavaScript的Array的sort()方法就是用于排序的,Array的sort()方法默认把所有元素先转换为String再排序,可以接收一个比较函数来实现自定义的排序
+  arrsort1=['google','apple','microsoft'].sort();
+  console.log(arrsort1);
+
+  arrsort2=[1,2,10,20].sort();
+  console.log(arrsort2);
+
+  var arrsorts = [10,20,1,2];
+  arrafter=arrsorts.sort(function(x,y){
+    if(x < y){
+      return -1;
+    }
+    if(x>y){
+      return 1;
+    }
+    return 0;
+  });
+  console.log(arrafter);
+  //sort()方法会直接对Array进行修改，它返回的结果仍是当前Array
+  if(arrafter === arrsorts) { console.log("arrafter = arrsorts");}
+
+  </script>
+
+
+
+
+
+
+
+UPDATE BY SHENGKAI 2017-6-8 2:55 AM 
 
 
 
