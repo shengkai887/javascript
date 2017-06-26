@@ -112,9 +112,9 @@ xiaoming instanceof Student; // true
 
 					Student---<------			Object
 					-prototype		|			-prototype
-						|	        |			|
+						|	        |		|
 		向下		|指向          	|指向		|指向
-						|       	|			|
+						|       	|		|
 	xiaoming-------->某个对象		|  ------>某个对象------>null
 	-name	    	-constructor-->-|
 	-hello
