@@ -1,0 +1,136 @@
+
+箭头函数
+
+
+1.ES6标准新增了一种新的函数：Arrow Function（箭头函数）
+
+箭头函数有两种格式
+
+(1)只包含一个表达式，连{ ... }和return都省略掉了。
+x => x * x
+
+上面的箭头函数相当于：
+
+function (x) {
+    return x * x;
+}
+
+(2)还有一种可以包含多条语句，这时候就不能省略{ ... }和return
+
+x => {
+    if (x > 0) {
+        return x * x;
+    }
+    else {
+        return - x * x;
+    }
+}
+
+(3)如果参数不是一个，就需要用括号()括起来
+
+// 两个参数:
+(x, y) => x * x + y * y
+
+// 无参数:
+() => 3.14
+
+// 可变参数:
+(x, y, ...rest) => {
+    var i, sum = x + y;
+    for (i=0; i<rest.length; i++) {
+        sum += rest[i];
+    }
+    return sum;
+}
+
+(4)如果要返回一个对象，就要注意，如果是单表达式，这么写的话会报错：
+
+// SyntaxError:
+x => { foo: x }
+
+因为和函数体的{ ... }有语法冲突，所以要改为：
+// ok:
+x => ({ foo: x })
+
+因为空对象 {} 与空语句块 {} 看上去一模一样，ES6 将始终把紧跟在 => 后面的 { 当作语句块的开始，而不是一个对象的开始，那么 puppy => {} 就被解析为一个没有函数体的箭头函数，而且返回值为 undefined。
+
+
+
+
+2.this
+
+箭头函数和匿名函数有个明显的区别：箭头函数内部的this是词法作用域，由上下文确定。
+
+箭头函数和普通函数有一个微妙的区别，那就是箭头函数没有它们自己的 this，箭头函数中的 this 值始终来自闭包所在的作用域。
+
+回顾前面的例子，由于JavaScript函数对this绑定的错误处理，下面的例子无法得到预期结果：
+
+var obj = {
+    birth: 1990,
+    getAge: function () {
+        var b = this.birth; // 1990
+        var fn = function () {
+            return new Date().getFullYear() - this.birth; // this指向window或undefined
+        };
+        return fn();
+    }
+};
+
+现在，箭头函数完全修复了this的指向，this总是指向词法作用域，也就是外层调用者obj：
+
+var obj = {
+    birth: 1990,
+    getAge: function () {
+        var b = this.birth; // 1990
+        var fn = () => new Date().getFullYear() - this.birth; // this指向obj对象
+        return fn();
+    }
+};
+obj.getAge(); // 25
+
+
+
+
+
+
+补充：
+// ES5
+$("#confetti-btn").click(function (event) {
+  playTrumpet();
+  fireConfettiCannon();
+});
+
+下面是采用箭头函数的写法：
+
+// ES6
+$("#confetti-btn").click(event => {
+  playTrumpet();
+  fireConfettiCannon();
+});
+
+需要注意的是，使用语句块的箭头函数不会自动返回一个值，必须显式地使用 return 来返回一个值。
+
+
+
+
+UPDATE BY SHENGKAI 2017-6-28 14：42 PM 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
