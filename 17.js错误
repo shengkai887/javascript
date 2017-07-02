@@ -73,6 +73,33 @@ catch(err)
 
 try代码执行有问题时会自动执行catch代码，try代码执行正常，catch代码不会被执行
 
+实例2：
+
+var r1, r2, s = null;
+try {
+    r1 = s.length; // 此处应产生错误
+    r2 = 100; // 该语句不会执行
+} catch (e) {
+    alert('出错了：' + e);
+} finally {
+    console.log('finally');
+}
+console.log('r1 = ' + r1); // r1应为undefined
+console.log('r2 = ' + r2); // r2应为undefined
+
+当代码块被try { ... }包裹的时候，就表示这部分代码执行过程中可能会发生错误，一旦发生错误，就不再继续执行后续代码，转而跳到catch块。catch (e) { ... }包裹的代码就是错误处理代码，变量e表示捕获到的错误。最后，无论有没有错误，finally一定会被执行。
+
+所以，有错误发生时，执行流程像这样：
+
+    先执行try { ... }的代码；
+    执行到出错的语句时，后续语句不再继续执行，转而执行catch (e) { ... }代码；
+    最后执行finally { ... }代码。
+
+而没有错误发生时，执行流程像这样：
+
+    先执行try { ... }的代码；
+    因为没有出错，catch (e) { ... }代码不会被执行；
+    最后执行finally { ... }代码。
 
 
 
@@ -124,6 +151,74 @@ function myFunction() {
 
 
 </html>
+
+
+
+4.错误类型
+
+JavaScript有一个标准的Error对象表示错误，还有从Error派生的TypeError、ReferenceError等错误对象。我们在处理错误时，可以通过catch(e)捕获的变量e访问错误对象：
+
+try {
+    ...
+} catch (e) {
+    if (e instanceof TypeError) {
+        alert('Type error!');
+    } else if (e instanceof Error) {
+        alert(e.message);
+    } else {
+        alert('Error: ' + e);
+    }
+}
+
+
+5.错误传播
+
+如果在一个函数内部发生了错误，它自身没有捕获，错误就会被抛到外层调用函数
+
+如果外层函数也没有捕获，该错误会一直沿着函数调用链向上抛出，直到被JavaScript引擎捕获，代码终止执行。
+
+所以，我们不必在每一个函数内部捕获错误，只需要在合适的地方来个统一捕获，一网打尽：
+
+
+function main(s) {
+    console.log('BEGIN main()');
+    try {
+        foo(s);
+    } catch (e) {
+        alert('出错了：' + e);
+    }
+    console.log('END main()');
+}
+
+function foo(s) {
+    console.log('BEGIN foo()');
+    bar(s);
+    console.log('END foo()');
+}
+
+function bar(s) {
+    console.log('BEGIN bar()');
+    console.log('length = ' + s.length);
+    console.log('END bar()');
+}
+
+main(null);
+
+
+当bar()函数传入参数null时，代码会报错，错误会向上抛给调用方foo()函数
+
+foo()函数没有try ... catch语句，所以错误继续向上抛给调用方main()函数，main()函数有try ... catch语句，所以错误最终在main()函数被处理了。
+
+至于在哪些地方捕获错误比较合适，需要视情况而定。
+
+
+
+
+
+
+
+
+
 
 
 
