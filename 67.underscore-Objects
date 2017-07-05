@@ -1,0 +1,101 @@
+
+underscore也提供了大量针对Object的函数。
+
+
+1.keys / allKeys
+
+keys()可以非常方便地返回一个object自身所有的key，但不包含从原型链继承下来的：
+
+allKeys()除了object自身的key，还包含从原型链继承下来的：
+
+
+  'use strict';
+
+  function Student(name,age){
+    this.name=name;
+    this.age=age;
+  }
+  //使用构造函数的方法创建对象xiaoming
+  //在JavaScript中，可以用关键字new来调用这个函数，并返回一个对象.
+  var xiaoming = new Student('xiaoming',20);
+
+  console.log(_.keys(xiaoming)); // ['name', 'age']
+  Student.prototype.school='NO 1 MIDDLE SCHOOL';
+  var xiaohong = new Student('xiaohong',30);
+  console.log(_.allKeys(xiaohong));// ['name', 'age', 'school']
+  
+
+2.values
+
+values()返回object自身但不包含原型链继承的所有值：
+
+  console.log(_.values(xiaoming));
+
+3.mapObject
+mapObject()就是针对object的map版本
+
+
+  var obj = {
+    a:1,
+    b:2,
+    c:3
+  };
+  // 注意传入的函数签名，value在前，key在后:
+  console.log(_.mapObject(obj,(v,k)=> 100+v));
+  //Object {a: 101, b: 102, c: 103}
+
+
+4.invert
+invert()把object的每个key-value来个交换，key变成value，value变成key
+
+  console.log(_.invert(obj));
+  //{1: "a", 2: "b", 3: "c"}
+
+
+5.extend / extendOwn
+
+extend()把多个object的key-value合并到第一个object并返回：
+
+var a = {name: 'Bob', age: 20};
+_.extend(a, {age: 15}, {age: 88, city: 'Beijing'}); // {name: 'Bob', age: 88, city: 'Beijing'}
+// 变量a的内容也改变了：
+a; // {name: 'Bob', age: 88, city: 'Beijing'}
+
+extendOwn()和extend()类似，但获取属性时忽略从原型链继承下来的属性。
+
+
+
+6.clone
+
+如果我们要复制一个object对象，就可以用clone()方法，它会把原有对象的所有属性都复制到新的对象中
+
+  'use strict';
+  var source = {
+    name:'xiaoming',
+    age:20,
+    skills:['js','css','html','python']
+  };
+  var copied = _.clone(source);
+
+  console.log(JSON.stringify(copied));
+
+clone()是“浅复制”。所谓“浅复制”就是说，两个对象相同的key所引用的value其实是同一对象：
+
+source.skills === copied.skills; // true
+
+也就是说，修改source.skills会影响copied.skills
+
+7.isEqual
+
+isEqual()对两个object进行深度比较，如果内容完全相同，则返回true：
+
+'use strict';
+
+var o1 = { name: 'Bob', skills: { Java: 90, JavaScript: 99 }};
+var o2 = { name: 'Bob', skills: { JavaScript: 99, Java: 90 }};
+
+o1 === o2; // false
+_.isEqual(o1, o2); // true
+
+
+UPDAGE BY SHENGKAI 2017-7-5 23:06 PM 
