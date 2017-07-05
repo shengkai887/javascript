@@ -1,0 +1,126 @@
+
+
+
+
+
+underscore为集合类对象提供了一致的接口。集合类是指Array和Object，暂不支持Map和Set。
+
+map
+
+通过转换函数(iteratee迭代器)映射列表中的每个值产生价值的新数组。
+iteratee传递三个参数：value，然后是迭代 index(或 key 愚人码头注：如果list是个JavaScript对象是，这个参数就是key)，最后一个是引用指向整个list。 
+
+_.map([1, 2, 3], function(num){ return num * 3; });
+=> [3, 6, 9]
+_.map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
+=> [3, 6, 9]
+_.map([[1, 2], [3, 4]], _.first);
+=> [1, 3]
+
+
+    <script>
+  'use strict';
+  var obj = {
+      name: 'bob',
+      school: 'NO.1 middle school',
+      address: 'xueyuan road'
+  };
+  var upper = _.map(obj, function (value, key) {
+      return key + " is "+ value;
+  });
+
+alert(upper);
+alert(JSON.stringify(upper));
+
+
+    </script>
+
+
+
+every
+_.every(list, [predicate], [context])
+如果list中的所有元素都通过predicate的真值检测就返回true。
+
+_.every([true, 1, null, 'yes'], _.identity);
+=> false
+
+
+some
+_.some(list, [predicate], [context])
+如果list中有任何一个元素通过 predicate 的真值检测就返回true。一旦找到了符合条件的元素, 就直接中断对list的遍历
+
+_.some([null, 0, 'yes', false]);
+=> true
+
+if(_.every([1,4,7],(x)=> x>0)){
+  console.log("ALL > 0");
+}else {
+  console.log("WILL HAVE 1 <0");
+}
+
+
+max / min
+这两个函数直接返回集合中最大和最小的数
+
+如果集合是Object，max()和min()只作用于value，忽略掉key：
+
+var arr=[3,5,7,9];
+console.log(_.max(arr));
+console.log(_.min(arr));
+
+var obj1 = {
+    a:1,
+    b:2,
+    c:3
+};
+console.log(_.max(obj1));
+
+groupBy
+
+groupBy_.groupBy(list, iteratee, [context])
+
+把一个集合分组为多个集合，通过 iterator 返回的结果进行分组. 如果 iterator 是一个字符串而不是函数, 那么将使用 iterator 作为各元素的属性名来对比进行分组. 
+
+_.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+=> {1: [1.3], 2: [2.1, 2.4]}
+
+floor 向下取整
+
+_.groupBy(['one', 'two', 'three'], 'length');
+=> {3: ["one", "two"], 5: ["three"]}
+
+
+var scores = [20, 81, 75, 40, 91, 59, 77, 66, 72, 88, 99];
+var groups = _.groupBy(scores,function(x) {
+    if(x<60){return 'C';}
+    else if (x<80){return 'B';}
+    else {return 'A';}
+});
+console.log(groups);
+
+// 结果:
+// {
+//   A: [81, 91, 88, 99],
+//   B: [75, 77, 66, 72],
+//   C: [20, 40, 59]
+// }
+
+
+shuffle 
+_.shuffle(list)
+返回一个随机乱序的 list 副本, 使用 Fisher-Yates shuffle 来进行随机乱序. 
+
+console.log(_.shuffle([1,2,3,4,5,6]));
+
+sample_.sample(list, [n])
+从 list中产生一个随机样本。传递一个数字表示从list中返回n个随机元素。否则将返回一个单一的随机项。
+
+console.log(_.sample([1,2,4,5,6,6]));
+console.log(_.sample([1,2,3,4,5,6],3));
+
+
+
+
+
+
+UPDATE BY SHENGKAI 2017-7-5 20:46
