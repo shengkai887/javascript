@@ -1,0 +1,102 @@
+
+因为underscore本来就是为了充分发挥JavaScript的函数式编程特性，所以也提供了大量JavaScript本身没有的高阶函数。
+
+1.bind
+
+常见的错误用法：
+'use strict';
+
+console.log('Hello, world!');
+// 输出'Hello, world!'
+
+var log = console.log;
+log('Hello, world!');
+// Uncaught TypeError: Illegal invocation
+
+
+log()取代console.log()，按照上面的做法是不行的，因为直接调用log()传入的this指针是undefined，必须这么用：
+
+'use strict';
+
+var log = console.log;
+// 调用call并传入console对象作为this:
+log.call(console, 'Hello, world!')
+// 输出Hello, world!
+
+
+还不如直接用console.log()
+
+但是，bind()可以帮我们把console对象直接绑定在log()的this指针上，以后调用log()就可以直接正常调用了：
+
+'use strict';
+
+var log = _.bind(console.log, console);
+log('Hello, world!');
+// 输出Hello, world!
+
+
+_.bind(function, object, *arguments)
+
+绑定函数 function 到对象 object 上, 也就是无论何时调用函数, 函数里的 this 都指向这个 object.
+任意可选参数 arguments 可以传递给函数 function , 可以填充函数所需要的参数,这也被称为 partial application。
+
+var func = function(greeting){ return greeting + ': ' + this.name };
+func = _.bind(func, {name: 'moe'}, 'hi');
+func();
+=> 'hi: moe'
+
+
+
+2.partial
+partial()就是为一个函数创建偏函数。
+
+假设我们要计算xy，这时只需要调用Math.pow(x, y)就可以了。
+
+假设我们经常计算2y，每次都写Math.pow(2, y)就比较麻烦，如果创建一个新的函数能直接这样写pow2N(y)就好了，
+这个新函数pow2N(y)就是根据Math.pow(x, y)创建出来的偏函数，它固定住了原函数的第一个参数（始终为2）：
+
+'use strict';
+
+var pow2N = _.partial(Math.pow, 2);
+pow2N(3); // 8
+pow2N(5); // 32
+pow2N(10); // 1024
+
+如果我们不想固定第一个参数，想固定第二个参数怎么办？比如，希望创建一个偏函数cube(x)，计算x3，可以用_作占位符，固定住第二个参数：
+
+'use strict';
+
+var cube = _.partial(Math.pow, _, 3);
+cube(3); // 27
+cube(5); // 125
+cube(10); // 1000
+
+创建偏函数的目的是将原函数的某些参数固定住，可以降低新函数调用的难度。
+
+
+3.once
+
+once()保证某个函数执行且仅执行一次。
+
+  var register = _.once(function(){
+    console.log("Register ok!");
+  });
+  register();
+  register();
+  register();
+
+  
+4.delay
+
+delay()可以让一个函数延迟执行，效果和setTimeout()是一样的，但是代码明显简单了
+
+如果要延迟调用的函数有参数，把参数也传进去：
+  _.delay(console.log,5000,'hello,','world');
+
+5s后执行conslog函数并有参数
+
+
+UPDATE BY SHENGKAI 2017-7-5 21:50 PM 
+
+
+
